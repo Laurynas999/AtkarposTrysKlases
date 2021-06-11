@@ -1,5 +1,6 @@
 package krastines.trysKlases;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,25 +14,31 @@ public class IsIvedimo extends IsTestinio{
 	 *   Pabaigti reikia
 	 */
 
-	public void isKlaviaturos () {
+	public void isKlaviaturos () throws IOException{
+		
 		System.out.println("Įveskite atkarpą :");
 		Scanner ivedame_atkarpas = new Scanner(System.in);
+		Double[] reiksmesx=  new Double[20];
 		Double nuskaityta_atkarpa = ivedame_atkarpas.nextDouble();
-		Double reiksmes[];
 		int n = 0;
 		
 		while (nuskaityta_atkarpa!=0) {
 
 			System.out.println("Įveskite kitą atkarpą :");
-			reiksmes[n] =nuskaityta_atkarpa;
+			reiksmesx[n] =nuskaityta_atkarpa;
 			n++;
 			nuskaityta_atkarpa = ivedame_atkarpas.nextDouble();	
-
+			
+		}
+		reiksmes = new Double [n];
+		for(int i=0;i<n;i++) {
+			reiksmes[i]=reiksmesx[i];
+				System.out.println(reiksmes[i]);
 		}
 		ivedame_atkarpas.close();
 	}
 	
-	public Double[] atiduokReiksmes(){
+	public Double[] atiduokReiksmes() throws IOException{
 		isKlaviaturos();
 		return reiksmes;
 	}
